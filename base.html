@@ -1,22 +1,24 @@
 <!doctype html>
 <html>
   <head>
-    <title>HTMLHyphenator - Online text hyphenation</title>
+    <title>Soft Hyphenator - Online text hyphenation</title>
     <link rel="stylesheet" href="css/style.css" />
     <meta name="description" content="Free online hyphenation of HTML content using soft hyphens" />
-    <link rel="canonical" href="http://htmlhyphenator.appspot.com/" />
+    <link rel="canonical" href="http://softhyphen.com/" />
+    <link rel="shortcut" href="/favicon.png" />
   </head>
 
   <body>
-    <h1><a href="/">HTML Hyphenator</a></h1>
+    <h1><a href="/">Soft Hyphenator</a></h1>
 
     <div id="container">
       <form method="post" action="/hyphenate">
-        <p><label for="content">HTML to be hyphenated:</label> (plain text too!)</p>
         <textarea name="content" id="content" rows="20" cols="80">{{ content|escape }}</textarea>
         <div>
           <select name="lang" id="lang">
-            <option value="en-us" selected>English (US)</option>
+            {% for language in languages %}
+            <option value="{{ language.0|escape }}"> {{ language.1|escape }} </option>
+            {% endfor %}
           </select>
           <input type="submit" name="hyphenate" value="Hyphenate" />
         </div>
@@ -24,12 +26,10 @@
 
 {% if output %}
       <div id="output">
-        <h2>Output (Raw)</h2>
         <textarea readonly rows="20" cols="80">{{ output|escape }}</textarea>
       </div>
 {% else %}
       <div id="instructions">
-        <p>Hello</p>
         <h3>Instructions</h3>
         <ol>
           <li>Paste your HTML into the text box on the left.</li>
@@ -51,7 +51,26 @@
         </ul>
       </div>
 {% endif %}
+
+      <div id="demo">
+        <h2>Sample</h2>
+
+        <table>
+          <tr>
+            <th>Un-hyphenated</th>
+            <th>Soft-Hyphenated</th>
+          </tr>
+          <tr>
+            <td>
+              <p>All are equal before the law and are entitled without any discrimination to equal protection of the law. All are entitled to equal protection against any discrimination in violation of this Declaration and against any incitement to such discrimination.</p>
+            </td>
+            <td>
+              <p>All are equal be&shy;fore the law and are en&shy;titled without any dis&shy;crim&shy;in&shy;a&shy;tion to equal pro&shy;tec&shy;tion of the law. All are en&shy;titled to equal pro&shy;tec&shy;tion against any dis&shy;crim&shy;in&shy;a&shy;tion in vi&shy;ol&shy;a&shy;tion of this De&shy;clar&shy;a&shy;tion and against any in&shy;cite&shy;ment to such dis&shy;crim&shy;in&shy;a&shy;tion.</p>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
-      <p id="footer">HTML Hyphenator by <a href="http://www.fortes.com/">Filipe Fortes</p>
+    <p id="footer">HTML Hyphenator by <a href="http://www.fortes.com/">Filipe Fortes</a></p>
   </body>
 </html>

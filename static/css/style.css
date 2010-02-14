@@ -1,16 +1,21 @@
 body {
-  background: #579;
-  font-family: Helvetica, Serif;
+  background: #00599c;
+  font-family: Calibri, Helvetica, Sans-Serif;
   font-size: 14px;
   line-height: 20px;
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
 }
 
 h1 a {
   text-indent: -999em;
   display: block;
-  background: url('/img/html-hyphenator.png') no-repeat;
-  width: 450px;
-  height: 60px;
+  background: url('/img/softhyphenator.png') no-repeat;
+  width: 900px;
+  height: 150px;
   margin: 0 auto;
 }
 
@@ -18,8 +23,10 @@ h1 a {
   position: relative;
   width: 840px;
   padding: 20px;
-  margin: 40px auto;
-  background: #f6f6f6;
+  margin: 0 auto 40px;
+  background: #eef;
+  border: 2px solid #ddd;
+  border-radius: 8px;
 }
 
 #container textarea {
@@ -39,7 +46,7 @@ select#lang {
 
 #output, #instructions {
   position: absolute;
-  right: 20px;
+  right: 25px;
   top: 20px;
   width: 400px;
 }
@@ -49,16 +56,32 @@ select#lang {
   margin 20px 0;
 }
 
-#instructions h2, h3 {
+h2, h3 {
   margin: 0;
-  font-family: Georgia, Serif;
-  font-weight: normal;
   line-height: 20px;
 }
 
-#output h2 {
-  font-size: 20px;
-  line-height: 20px;
+#demo {
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+#demo p {
+  font-size: 16px;
+  font-family: Georgia, Serif;
+  margin-top: 0;
+  text-align: justify;
+}
+
+#demo table {
+  width: 430px;
+  margin: 0 auto;
+}
+
+#demo td {
+  vertical-align: top;
+  padding: 0 20px;
 }
 
 #footer {
