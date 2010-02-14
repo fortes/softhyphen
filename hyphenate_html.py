@@ -4,6 +4,7 @@ Hyphenates an HTML fragement using soft hyphens
 Author: Filipe Fortes
 """
 
+import re
 from lib.hyphenator import Hyphenator
 from lib.BeautifulSoup import BeautifulSoup, NavigableString
 
@@ -15,11 +16,16 @@ def hyphenate_html(html, language='en-us', hyphenator=None):
     u'<p>It is <em>beau&shy;ti&shy;ful</em> out&shy;side today!</p>'
 
     >>> hyphenate_html('O paralelepipedo atrevessou a rua', 'pt-br')
-    u'O &shy;pa&shy;ra&shy;le&shy;le&shy;pi&shy;pe&shy;do a&shy;tre&shy;ves&shy;sou a &shy;rua'
+    u'O pa&shy;ra&shy;le&shy;le&shy;pi&shy;pe&shy;do atre&shy;ves&shy;sou a rua'
 
     Content inside <code>, <tt>, and <pre> blocks is not hyphenated
     >>> hyphenate_html('Document: <code>document + page_status</code>')
     u'Doc&shy;u&shy;ment: <code>document + page_status</code>'
+
+    Short words are not hyphenated
+
+    >>> hyphenate_html("<p>The brave men, living and dead.</p>")
+    u'<p>The brave men, liv&shy;ing and dead.</p>'
     """
     # Load hyphenator if one is not provided
     if not hyphenator:
@@ -34,6 +40,8 @@ def hyphenate_html(html, language='en-us', hyphenator=None):
     return unicode(soup)
 
 SOFT_HYPHEN = r'&shy;'
+SPACE = r' '
+STRIP_WHITESPACE = re.compile('\w+', re.MULTILINE)
 ELEMENT_BLACKLIST = [
     'code', 'tt', 'pre', 'head', 'title', 'script', 'style', 'meta'
 ]
@@ -42,10 +50,13 @@ def hyphenate_element(node, hyphenator):
     Hyphenate the text within an element, returning the hyphenated version
     """
     if isinstance(node, NavigableString):
-        return NavigableString(hyphenator.inserted(node, SOFT_HYPHEN))
+        # Initial whitespace
+        return NavigableString(STRIP_WHITESPACE.sub(
+            (lambda x: hyphenator.inserted(x.group(), SOFT_HYPHEN)), node)
+        )
     elif node.contents and node.name not in ELEMENT_BLACKLIST:
-        for i, c in enumerate(node.contents):
-            node.contents[i] = hyphenate_element(c, hyphenator)
+        for i, child in enumerate(node.contents):
+            node.contents[i] = hyphenate_element(child, hyphenator)
 
     return node
 
