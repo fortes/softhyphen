@@ -43,7 +43,8 @@ SOFT_HYPHEN = r'&shy;'
 SPACE = r' '
 STRIP_WHITESPACE = re.compile('\w+', re.MULTILINE)
 ELEMENT_BLACKLIST = [
-    'code', 'tt', 'pre', 'head', 'title', 'script', 'style', 'meta'
+    'code', 'tt', 'pre', 'head', 'title', 'script', 'style', 'meta', 'object',
+    'embed', 'samp', 'var', 'math', 'select', 'option', 'input', 'textarea'
 ]
 def hyphenate_element(node, hyphenator):
     """

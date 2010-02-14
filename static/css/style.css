@@ -13,7 +13,7 @@ h1 {
 h1 a {
   text-indent: -999em;
   display: block;
-  background: url('/img/softhyphenator.png') no-repeat;
+  background: url('/img/softhyphenator.gif') no-repeat;
   width: 900px;
   height: 150px;
   margin: 0 auto;
@@ -62,6 +62,7 @@ h2, h3 {
 }
 
 #demo {
+  position: relative;
   margin-top: 40px;
   border-top: 1px solid #ddd;
   padding-top: 20px;
@@ -75,13 +76,13 @@ h2, h3 {
 }
 
 #demo table {
-  width: 430px;
-  margin: 0 auto;
+  width: 410px;
+  margin: 0;
 }
 
 #demo td {
   vertical-align: top;
-  padding: 0 20px;
+  padding: 0 15px;
 }
 
 #footer {

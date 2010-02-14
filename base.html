@@ -16,8 +16,9 @@
         <textarea name="content" id="content" rows="20" cols="80">{{ content|escape }}</textarea>
         <div>
           <select name="lang" id="lang">
+            <option value="{{ lang|escape }}" selected>{{ lang_name|default:lang|escape }}</option>
             {% for language in languages %}
-            <option value="{{ language.0|escape }}"> {{ language.1|escape }} </option>
+            <option value="{{ language.0|escape }}">{{ language.1|escape }}</option>
             {% endfor %}
           </select>
           <input type="submit" name="hyphenate" value="Hyphenate" />

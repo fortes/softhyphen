@@ -14,7 +14,8 @@ class BaseHandler(webapp.RequestHandler):
 class HtmlHyphenator(BaseHandler):
     def get(self):
         self.response.out.write(self.render_template('base.html', {
-            'lang': 'en-us'
+            'lang': 'en-us',
+            'lang_name': 'English'
         }))
 
     def post(self):
@@ -30,7 +31,6 @@ class HtmlHyphenator(BaseHandler):
         }))
 
 LANGUAGES = [
-    ('en-us', 'English (US)'),
     ('cs-cz', 'Czech'),
     ('da-dk', 'Danish'),
     ('de-de', 'German'),
@@ -38,6 +38,7 @@ LANGUAGES = [
     ('el-gr', 'Greek'),
     ('en-ca', 'English (Canadian)'),
     ('en-gb', 'English (UK)'),
+    ('en-us', 'English (US)'),
     ('es-es', 'Spanish'),
     ('fi-fi', 'Finish'),
     ('ga-ie', 'Irish'),
