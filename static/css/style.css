@@ -1,0 +1,73 @@
+body {
+  background: #579;
+  font-family: Helvetica, Serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+h1 a {
+  text-indent: -999em;
+  display: block;
+  background: url('/img/html-hyphenator.png') no-repeat;
+  width: 450px;
+  height: 60px;
+  margin: 0 auto;
+}
+
+#container {
+  position: relative;
+  width: 840px;
+  padding: 20px;
+  margin: 40px auto;
+  background: #f6f6f6;
+}
+
+#container textarea {
+  width: 400px;
+  font-size: 12px;
+  line-height: 16px;
+  font-family: Consolas, Monospace;
+}
+
+#container form {
+  width: 400px;
+}
+
+select#lang {
+  float: right;
+}
+
+#output, #instructions {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 400px;
+}
+
+#instructions p {
+  text-align: justify;
+  margin 20px 0;
+}
+
+#instructions h2, h3 {
+  margin: 0;
+  font-family: Georgia, Serif;
+  font-weight: normal;
+  line-height: 20px;
+}
+
+#output h2 {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+#footer {
+  color: #fff;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+}
+
+#footer a {
+  color: #fff;
+}

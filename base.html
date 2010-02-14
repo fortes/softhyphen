@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <title>HTMLHyphenator - Online text hyphenation</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <meta name="description" content="Free online hyphenation of HTML content using soft hyphens" />
+    <link rel="canonical" href="http://htmlhyphenator.appspot.com/" />
+  </head>
+
+  <body>
+    <h1><a href="/">HTML Hyphenator</a></h1>
+
+    <div id="container">
+      <form method="post" action="/hyphenate">
+        <p><label for="content">HTML to be hyphenated:</label> (plain text too!)</p>
+        <textarea name="content" id="content" rows="20" cols="80">{{ content|escape }}</textarea>
+        <div>
+          <select name="lang" id="lang">
+            <option value="en-us" selected>English (US)</option>
+          </select>
+          <input type="submit" name="hyphenate" value="Hyphenate" />
+        </div>
+      </form>
+
+{% if output %}
+      <div id="output">
+        <h2>Output (Raw)</h2>
+        <textarea readonly rows="20" cols="80">{{ output|escape }}</textarea>
+      </div>
+{% else %}
+      <div id="instructions">
+        <p>Hello</p>
+        <h3>Instructions</h3>
+        <ol>
+          <li>Paste your HTML into the text box on the left.</li>
+          <li>Choose the primary language of the text.</li>
+          <li>Hyphenate!</li>
+        </ol>
+
+        <h3>What is a soft hyphen?</h3>
+        <p>A soft-hyphen (<code>&amp;shy;</code>) is a special character that indicates that a word can be broken up with a hyphen, if need be. This is useful for justification.</p>
+
+        <h3>Browser support</h3>
+
+        <ul>
+          <li>Internet Explorer 5.5 and later</li>
+          <li>Firefox 3.0 and later</li>
+          <li>Safari 3.0 and later</li>
+          <li>Chrome 1.0 and later</li>
+          <li>Opera 9.6 and later</li>
+        </ul>
+      </div>
+{% endif %}
+    </div>
+      <p id="footer">HTML Hyphenator by <a href="http://www.fortes.com/">Filipe Fortes</p>
+  </body>
+</html>

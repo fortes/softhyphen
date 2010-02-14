@@ -35,7 +35,7 @@ def hyphenate_html(html, language='en-us', hyphenator=None):
 
 SOFT_HYPHEN = r'&shy;'
 ELEMENT_BLACKLIST = [
-    'code', 'tt', 'pre'
+    'code', 'tt', 'pre', 'head', 'title', 'script', 'style', 'meta'
 ]
 def hyphenate_element(node, hyphenator):
     """
