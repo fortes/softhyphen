@@ -8,7 +8,8 @@ import re
 from lib.hyphenator import Hyphenator
 from lib.BeautifulSoup import BeautifulSoup, NavigableString
 
-def hyphenate_html(html, language='en-us', hyphenator=None):
+
+def hyphenate_html(html, language='en-us', hyphenator=None, blacklist_tags= ('code', 'tt', 'pre', 'head', 'title', 'script', 'style', 'meta', 'object', 'embed', 'samp', 'var', 'math', 'select', 'option', 'input', 'textarea') ):
     r"""
     Hyphenate a fragement of HTML
 
@@ -35,32 +36,35 @@ def hyphenate_html(html, language='en-us', hyphenator=None):
     soup = BeautifulSoup(html)
 
     # Recursively hyphenate each element
-    hyphenate_element(soup, hyphenator)
+    hyphenate_element(soup, hyphenator, blacklist_tags)
 
     return unicode(soup)
 
-SOFT_HYPHEN = r'&shy;'
-SPACE = r' '
-STRIP_WHITESPACE = re.compile('\w+', re.MULTILINE)
-ELEMENT_BLACKLIST = [
-    'code', 'tt', 'pre', 'head', 'title', 'script', 'style', 'meta', 'object',
-    'embed', 'samp', 'var', 'math', 'select', 'option', 'input', 'textarea'
-]
-def hyphenate_element(node, hyphenator):
+
+def hyphenate_element(soup, hyphenator, blacklist_tags):
     """
     Hyphenate the text within an element, returning the hyphenated version
+    Walks the DOM Tree to track down all text
     """
-    if isinstance(node, NavigableString):
-        # Initial whitespace
-        return NavigableString(STRIP_WHITESPACE.sub(
-            (lambda x: hyphenator.inserted(x.group(), SOFT_HYPHEN)), node)
-        )
-    elif node.contents and node.name not in ELEMENT_BLACKLIST:
-        for i, child in enumerate(node.contents):
-            node.contents[i] = hyphenate_element(child, hyphenator)
+    # Blacklist function and constants
+    SOFT_HYPHEN = r'&shy;'
+    SPACE = r' '
+    STRIP_WHITESPACE = re.compile('\w+', re.MULTILINE)
+    BLACKLIST = lambda tag: tag not in blacklist_tags
+    
+    # Find any element with text in it
+    paragraphs = soup.findAll(text = lambda text: len(text) > 0)
+    for paragraph in paragraphs:
+        # Make sure element isn't on blacklist
+        if BLACKLIST(paragraph.parent.name):
+            # Replace text with hyphened version
+            paragraph.replaceWith(STRIP_WHITESPACE.sub(
+                (lambda x: hyphenator.inserted(x.group(), SOFT_HYPHEN)), paragraph)
+            )
+    return soup
+            
 
-    return node
-
+    
 DICTIONARIES = {
     'cs-cz': 'hyph_cs_CZ',
     'da-dk': 'hyph_da_DK',

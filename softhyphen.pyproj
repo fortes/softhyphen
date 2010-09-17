@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{462932b2-acb7-438a-8ae3-11243f07cbed}</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>
+    </StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <AssemblyName>softhyphen</AssemblyName>
+    <Name>softhyphen</Name>
+    <RootNamespace>softhyphen</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="dicts" />
+    <Folder Include="lib" />
+    <Folder Include="static" />
+    <Folder Include="static\css" />
+    <Folder Include="static\img" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.py" />
+    <None Include="app.yaml" />
+    <None Include="base.html" />
+    <None Include="dicts\COPYING.GPL" />
+    <None Include="dicts\hyph_cs_CZ.dic" />
+    <None Include="dicts\hyph_da_DK.dic" />
+    <None Include="dicts\hyph_de_CH.dic" />
+    <None Include="dicts\hyph_de_DE.dic" />
+    <None Include="dicts\hyph_el_GR.dic" />
+    <None Include="dicts\hyph_en_CA.dic" />
+    <None Include="dicts\hyph_en_GB.dic" />
+    <None Include="dicts\hyph_en_US.dic" />
+    <None Include="dicts\hyph_es_ES.dic" />
+    <None Include="dicts\hyph_fi_FI.dic" />
+    <None Include="dicts\hyph_ga_IE.dic" />
+    <None Include="dicts\hyph_hu_HU.dic" />
+    <None Include="dicts\hyph_hu_HU_nonutf.dic" />
+    <None Include="dicts\hyph_ia.dic" />
+    <None Include="dicts\hyph_id_ID.dic" />
+    <None Include="dicts\hyph_is_IS.dic" />
+    <None Include="dicts\hyph_it_IT.dic" />
+    <None Include="dicts\hyph_lt_LT.dic" />
+    <None Include="dicts\hyph_nl_NL.dic" />
+    <None Include="dicts\hyph_pl_PL.dic" />
+    <None Include="dicts\hyph_pt_BR.dic" />
+    <None Include="dicts\hyph_pt_PT.dic" />
+    <None Include="dicts\hyph_ro_RO.dic" />
+    <None Include="dicts\hyph_ru_RU.dic" />
+    <None Include="dicts\hyph_sh.dic" />
+    <None Include="dicts\hyph_sk_SK.dic" />
+    <None Include="dicts\hyph_sl_SI.dic" />
+    <None Include="dicts\hyph_sr.dic" />
+    <None Include="dicts\hyph_sv_SE.dic" />
+    <None Include="dicts\hyph_uk_UA.dic" />
+    <None Include="dicts\OLVASSEL_hyph_hu_HU.txt" />
+    <None Include="dicts\README" />
+    <None Include="dicts\README-COMO-HYPH_ES.txt" />
+    <None Include="dicts\README.md" />
+    <None Include="dicts\README_hyph_cs_CZ.txt" />
+    <None Include="dicts\README_hyph_da_DK.txt" />
+    <None Include="dicts\README_hyph_de_CH.txt" />
+    <None Include="dicts\README_hyph_de_DE.txt" />
+    <None Include="dicts\README_hyph_el_GR.txt" />
+    <None Include="dicts\README_hyph_en_CA.txt" />
+    <None Include="dicts\README_hyph_en_GB.txt" />
+    <None Include="dicts\README_hyph_en_US.txt" />
+    <None Include="dicts\README_hyph_es_ES.txt" />
+    <None Include="dicts\README_hyph_fi_FI.txt" />
+    <None Include="dicts\README_hyph_ga_IE.txt" />
+    <None Include="dicts\README_hyph_hu_HU.txt" />
+    <None Include="dicts\README_hyph_ia.txt" />
+    <None Include="dicts\README_hyph_is_IS.txt" />
+    <None Include="dicts\README_hyph_it_IT.txt" />
+    <None Include="dicts\README_hyph_lt_LT.txt" />
+    <None Include="dicts\README_hyph_nl_NL.txt" />
+    <None Include="dicts\README_hyph_pl_PL.txt" />
+    <None Include="dicts\README_hyph_pt_BR.txt" />
+    <None Include="dicts\README_hyph_pt_PT.txt" />
+    <None Include="dicts\README_hyph_ru_RU.txt" />
+    <None Include="dicts\README_hyph_sk_SK.txt" />
+    <None Include="dicts\README_hyph_sl_SI.txt" />
+    <None Include="dicts\README_hyph_sv_SE.txt" />
+    <None Include="dicts\README_hyph_uk_UA.txt" />
+    <None Include="dicts\README_id_ID.txt" />
+    <None Include="dicts\README_sh.txt" />
+    <None Include="dicts\README_sr.txt" />
+    <None Include="handlers.py" />
+    <None Include="hyphenate_html.py" />
+    <None Include="lib\BeautifulSoup.py" />
+    <None Include="lib\hyphenator.py" />
+    <None Include="lib\__init__.py" />
+    <None Include="README.md" />
+    <None Include="static\css\style.css" />
+    <None Include="static\img\favicon.ico" />
+    <None Include="static\img\favicon.png" />
+    <None Include="static\img\softhyphenator.gif" />
+    <None Include="static\robots.txt" />
+  </ItemGroup>
+</Project>
