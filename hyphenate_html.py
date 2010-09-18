@@ -41,22 +41,24 @@ def hyphenate_html(html, language='en-us', hyphenator=None, blacklist_tags= ('co
     return unicode(soup)
 
 
+# Constants
+SOFT_HYPHEN = r'&shy;'
+SPACE = r' '
+STRIP_WHITESPACE = re.compile('\w+', re.MULTILINE)
+
 def hyphenate_element(soup, hyphenator, blacklist_tags):
     """
     Hyphenate the text within an element, returning the hyphenated version
     Walks the DOM Tree to track down all text
     """
-    # Blacklist function and constants
-    SOFT_HYPHEN = r'&shy;'
-    SPACE = r' '
-    STRIP_WHITESPACE = re.compile('\w+', re.MULTILINE)
-    BLACKLIST = lambda tag: tag not in blacklist_tags
+    # Blacklist function
+    BLACKLIST = lambda tag: tag in blacklist_tags
     
     # Find any element with text in it
     paragraphs = soup.findAll(text = lambda text: len(text) > 0)
     for paragraph in paragraphs:
         # Make sure element isn't on blacklist
-        if BLACKLIST(paragraph.parent.name):
+        if not BLACKLIST(paragraph.parent.name):
             # Replace text with hyphened version
             paragraph.replaceWith(STRIP_WHITESPACE.sub(
                 (lambda x: hyphenator.inserted(x.group(), SOFT_HYPHEN)), paragraph)
@@ -116,7 +118,7 @@ def get_hyphenator_for_language(language):
 def _test():
     """Run doctests"""
     import doctest
-    doctest.testmod()
+    doctest.testmod(verbose=True)
 
 if __name__ == '__main__':
     _test()
